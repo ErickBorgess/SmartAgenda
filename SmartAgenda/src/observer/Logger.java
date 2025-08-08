@@ -4,6 +4,6 @@ import model.Tarefa;
 
 public class Logger implements Observer{
     public void atualizar(Tarefa tarefa) {
-        System.out.println("[LOG] Nova Tarefa Atualizada!");
+        System.out.println("[LOG] Nova Tarefa!\nNome: "+tarefa.getNome()+"\nDescrição: "+tarefa.getDescricao()+"\n--------------------");
     }
 }

@@ -1,18 +1,66 @@
-## Getting Started
+# SmartAgenda
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## 📌 Objetivo
+O **SmartAgenda** é um sistema simples de gerenciamento de tarefas implementado em Java, com foco na aplicação de **Padrões de Projeto Comportamentais** da estrutura GoF.  
+O projeto foi desenvolvido como parte da disciplina de **Padrões de Projeto**, atendendo aos requisitos definidos pelo professor.
 
-## Folder Structure
+## 🛠️ Padrões GoF aplicados
 
-The workspace contains two folders by default, where:
+### 1. **Strategy**
+Permite definir diferentes estratégias de execução de tarefas, podendo trocar o comportamento em tempo de execução sem modificar a classe `Tarefa`.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Implementações:
+- `ExecucaoImediata` → executa a tarefa no momento da chamada.
+- `ExecucaoComConfirmacao` → solicita confirmação do usuário antes de executar.
+- `ExecucaoAtrasada` → aguarda alguns segundos antes de executar.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Interface:
+- `strategy/ExecucaoStrategy.java`
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+### 2. **Command**
+Encapsula uma ação como um objeto, permitindo parametrizar métodos com diferentes comandos.
 
-## Dependency Management
+Implementações:
+- `EnviarEmail` → simula envio de e-mail.
+- `TocarAlarme` → simula acionamento de alarme.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Interface:
+- `command/Command.java`
+
+### 3. **Observer**
+Permite que objetos sejam notificados automaticamente quando um evento ocorre (adição de tarefa).
+
+Observadores:
+- `Logger` → registra no console a adição de tarefas.
+- `Notificador` → envia uma simulação de notificação.
+
+Interface:
+- `observer/Observer.java`
+
+## 📂 Estrutura de Pastas
+```
+src/
+ ├── command/
+ │   ├── Command.java
+ │   ├── EnviarEmail.java
+ │   └── TocarAlarme.java
+ ├── core/
+ │   └── Agenda.java
+ ├── model/
+ │   └── Tarefa.java
+ ├── observer/
+ │   ├── Logger.java
+ │   ├── Notificador.java
+ │   └── Observer.java
+ ├── strategy/
+ │   ├── ExecucaoStrategy.java
+ │   ├── ExecucaoImediata.java
+ │   ├── ExecucaoAtrasada.java
+ │   └── ExecucaoComConfirmacao.java
+ └── Main.java
+ ```
+
+ ## Como executar
+1. Abra o projeto no **VS Code** ou outra IDE Java.
+2. Compile todos os arquivos.
+3. Execute a classe `Main`.
